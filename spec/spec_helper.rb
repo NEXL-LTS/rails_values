@@ -7,9 +7,7 @@ if ENV['COVERAGE']
   SimpleCov.start
 end
 
-require 'active_job'
-require 'rails_values'
-
+require 'active_model'
 class SimpleModel
   include ActiveModel::Model
 

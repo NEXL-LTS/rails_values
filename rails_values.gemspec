@@ -18,12 +18,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'actionview', '>= 6.0.0'
-  spec.add_dependency 'activejob', '>= 6.0.0'
-  spec.add_dependency 'activemodel', '>= 6.0.0'
-  spec.add_dependency 'activesupport', '>= 6.0.0'
-  spec.add_dependency 'countries', '>= 3.0.0'
-  spec.add_dependency 'mail', '>= 2.7.1'
-  spec.add_dependency 'money', '>= 6.13.2'
-  spec.add_dependency 'multi_json', '>= 1.0.0'
+  spec.add_dependency 'actionview', '>= 6.0.0', '< 7.0'
+  spec.add_dependency 'activejob', '>= 6.0.0', '< 7.0'
+  spec.add_dependency 'activemodel', '>= 6.0.0', '< 7.0'
+  spec.add_dependency 'activesupport', '>= 6.0.0', '< 7.0'
+  spec.add_dependency 'countries', '>= 3.0.0', '< 4.0'
+  spec.add_dependency 'mail', '>= 2.7.1', '< 3.0'
+  spec.add_dependency 'money', '>= 6.13.2', '< 7.0'
+  spec.add_dependency 'multi_json', '>= 1.0.0', '< 2.0'
 end

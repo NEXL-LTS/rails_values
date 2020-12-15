@@ -1,4 +1,6 @@
+require 'active_job'
 require 'active_job/arguments'
+require 'rails_values/email_address_serializer'
 
 module RailsValues
   RSpec.describe EmailAddressSerializer do
