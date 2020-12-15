@@ -1,6 +1,8 @@
 module RailsValues
   class SimpleStringConverter < ActiveModel::Type::Value
     def initialize(type_class)
+      raise ArgumentError, "#{type_class} does not respond to cast" unless type_class.respond_to?(:cast)
+
       @type_class = type_class
       super()
     end
