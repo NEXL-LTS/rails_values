@@ -20,7 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### EmailAddress
+
+```ruby
+class Person < ApplicationRecord
+  attribute :email, :rv_email_address
+
+  validates :email, value: true
+end
+```
 
 ## Development
 
