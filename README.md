@@ -28,6 +28,27 @@ class Person < ApplicationRecord
 
   validates :email, value: true
 end
+
+p = Person.new(email: "person@email.com")
+puts p.email.subdomain # "email.com"
+puts p.email.another_with_same_domain("other") # "other@email.com"
+puts p.email.free_email? # true
+puts p.email.free_email? # true
+```
+
+### Subdomain
+
+```ruby
+class Company < ApplicationRecord
+  attribute :subdomain, :sv_subdomain
+
+  validates :subdomain, value: true
+end
+
+c = Company.new(subdomain: "example.com")
+puts c.subdomain.local_email("test") # "test@example.com"
+puts c.subdomain.parts # ["example", "com"]
+puts c.subdomain.free_email? # false
 ```
 
 ## Development

@@ -12,6 +12,9 @@ module RailsValues
       ActiveRecord::Type.register(:rv_email_address) do
         RV::SimpleStringConverter.new(EmailAddress)
       end
+      ActiveRecord::Type.register(:rv_subdomain) do
+        RV::SimpleStringConverter.new(Subdomain)
+      end
     end
   end
 end
