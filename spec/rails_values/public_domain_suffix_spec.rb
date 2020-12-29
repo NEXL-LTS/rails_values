@@ -32,9 +32,16 @@ module RailsValues
       expect(value).not_to be_exceptional
     end
 
+    it 'accepts nexl.com.au' do
+      value = cast('nexl.com.au')
+      expect(value.to_s).to eq('nexl.com.au')
+      expect(value).to be_present
+      expect(value).not_to be_exceptional
+    end
+
     it 'accepts numbers and dashes' do
-      value = cast('a.xn--1qqw23a')
-      expect(value.to_s).to eq('a.xn--1qqw23a')
+      value = cast('xn--85x722f.xn--55qx5d.cn')
+      expect(value.to_s).to eq('xn--85x722f.xn--55qx5d.cn')
       expect(value).to be_present
       expect(value).not_to be_exceptional
     end
