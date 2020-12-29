@@ -2,6 +2,7 @@ require 'mail'
 require_relative 'whole_value_concern'
 require_relative 'exceptional_value'
 require_relative 'subdomain'
+require_relative 'public_domain_suffix'
 
 module RailsValues
   class EmailAddress
@@ -49,6 +50,10 @@ module RailsValues
 
     def subdomain
       Subdomain.cast(domain)
+    end
+
+    def public_domain_suffix
+      PublicDomainSuffix.cast(domain)
     end
 
     def another_with_same_domain(local:)

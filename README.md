@@ -36,11 +36,32 @@ puts p.email.free_email? # true
 puts p.email.free_email? # true
 ```
 
+### PublicDomainSuffix
+
+uses https://github.com/weppos/publicsuffix-ruby under the hood
+
+```ruby
+class Company < ApplicationRecord
+  attribute :domain_suffix, :rv_public_domain_suffix
+
+  validates :domain_suffix, value: true
+end
+
+c = Company.new(domain: "www.example.com")
+puts c.domain_suffix.local_email("test") # RailsValues::EmailAddress(test@example.com)
+puts c.domain_suffix.tld # "com"
+puts c.domain_suffix.sld # "example"
+puts c.domain_suffix.trd # "www"
+puts c.domain_suffix.free_email? # false
+puts c.domain_suffix.domain # RailsValues::PublicDomainSuffix(example.com)
+puts c.domain_suffix.subdomain # RailsValues::PublicDomainSuffix(www.example.com)
+```
+
 ### Subdomain
 
 ```ruby
 class Company < ApplicationRecord
-  attribute :subdomain, :sv_subdomain
+  attribute :subdomain, :rv_subdomain
 
   validates :subdomain, value: true
 end

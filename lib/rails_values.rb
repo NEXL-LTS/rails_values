@@ -1,4 +1,4 @@
-require 'active_support/core_ext'
+require 'active_support'
 require 'active_model'
 require 'action_view'
 
@@ -10,6 +10,7 @@ require_relative 'rails_values/blank'
 require_relative 'rails_values/exceptional_value'
 
 require_relative 'rails_values/subdomain'
+require_relative 'rails_values/public_domain_suffix'
 require_relative 'rails_values/email_address'
 require_relative 'rails_values/email_address_list'
 require_relative 'rails_values/http_url'

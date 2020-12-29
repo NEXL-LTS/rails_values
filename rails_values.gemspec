@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'mail', '>= 2.7.1', '< 3.0'
   spec.add_dependency 'money', '>= 6.13.2', '< 7.0'
   spec.add_dependency 'multi_json', '>= 1.0.0', '< 2.0'
+  spec.add_dependency 'public_suffix', '< 5.0'
 end
