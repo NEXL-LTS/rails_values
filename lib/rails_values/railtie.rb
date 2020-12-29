@@ -15,6 +15,9 @@ module RailsValues
       ActiveRecord::Type.register(:rv_subdomain) do
         SimpleStringConverter.new(Subdomain)
       end
+      ActiveRecord::Type.register(:rv_public_domain_suffix) do
+        SimpleStringConverter.new(PublicDomainSuffix)
+      end
     end
   end
 end
