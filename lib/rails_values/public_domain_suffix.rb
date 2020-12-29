@@ -11,7 +11,7 @@ module RailsValues
 
     def initialize(content)
       @content = PublicSuffix.parse(content).freeze
-      raise ArgumentError, "has invalid tld of #{tld}" unless TOP_LEVEL_DOMAINS.any?{|d| content.upcase.end_with?(d) }
+      raise ArgumentError, "has invalid tld of #{tld}" unless TOP_LEVEL_DOMAINS.any? { |d| content.upcase.end_with?(d) }
 
       freeze
     end
