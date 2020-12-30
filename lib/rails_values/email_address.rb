@@ -60,7 +60,7 @@ module RailsValues
       subdomain.local_email(local)
     end
 
-    delegate :free_email?, to: :subdomain
+    delegate :free_email?, to: :public_domain_suffix
 
     def inspect
       "#{self.class}(#{mail_address.format})"

@@ -44,17 +44,13 @@ module RailsValues
     end
 
     def free_email?
-      self.class.free.include? @content
+      FREE_DOMAINS.bsearch { |x| to_str <=> x }.present?
     end
 
     # https://data.iana.org/TLD/tlds-alpha-by-domain.txt
     TOP_LEVEL_DOMAINS = File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp).freeze
 
-    FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).freeze
-
-    def self.free
-      FREE_DOMAINS.map { |domain_string| cast(domain_string) }
-    end
+    FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).sort.freeze
 
     def self.cast(content)
       return PublicDomainSuffixBlank.new if content.blank?

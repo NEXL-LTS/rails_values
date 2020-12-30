@@ -36,7 +36,7 @@ module RailsValues
     end
 
     def free_email?
-      Subdomain.free.include? @content
+      FREE_DOMAINS.bsearch { |x| @content <=> x }.present?
     end
 
     def student?
@@ -46,7 +46,7 @@ module RailsValues
     # https://data.iana.org/TLD/tlds-alpha-by-domain.txt
     TOP_LEVEL_DOMAINS = File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp).freeze
 
-    FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).freeze
+    FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).sort.freeze
 
     def self.free
       FREE_DOMAINS.map { |domain_string| cast(domain_string) }
