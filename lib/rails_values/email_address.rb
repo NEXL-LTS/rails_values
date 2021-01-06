@@ -46,21 +46,27 @@ module RailsValues
       mail_address.address.to_s
     end
 
-    delegate :domain, to: :mail_address
+    delegate :domain, to: :mail_address, prefix: true
 
-    def subdomain
-      Subdomain.cast(domain)
+    def domain
+      return subdomain unless subdomain.regular?
+
+      subdomain.domain
     end
 
-    def public_domain_suffix
-      PublicDomainSuffix.cast(domain)
+    def subdomain
+      PublicDomainSuffix.cast(mail_address_domain)
+    end
+
+    def subdomain?
+      domain != subdomain
     end
 
     def another_with_same_domain(local:)
       subdomain.local_email(local)
     end
 
-    delegate :free_email?, to: :public_domain_suffix
+    delegate :free_email?, to: :domain
 
     def inspect
       "#{self.class}(#{mail_address.format})"
