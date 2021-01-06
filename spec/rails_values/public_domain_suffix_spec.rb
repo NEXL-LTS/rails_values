@@ -104,8 +104,12 @@ module RailsValues
     end
 
     describe '#country' do
-      it { expect(cast('example.co.za').country).to eq(Country.cast('South Africa')) }
-      it { expect(cast('www.lawyers.af').country).to eq(Country.cast('Afghanistan')) }
+      it { expect(cast('example.co.za').country).to eq(Country.cast('ZA')) }
+      it { expect(cast('www.lawyers.af').country).to eq(Country.cast('AF')) }
+      it { expect(cast('nexl.com.au').country).to eq(Country.cast('AU')) }
+      it { expect(cast('app.nexl.io').country).to eq(Country.cast('')) }
+      it { expect(cast('nexl.org').country).to eq(Country.cast('')) }
+      it { expect(cast('example.com').country).to eq(Country.cast('')) }
     end
   end
 end
