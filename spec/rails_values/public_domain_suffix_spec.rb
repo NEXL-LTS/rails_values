@@ -102,5 +102,10 @@ module RailsValues
       it { expect(cast('me.com')).to be_free_email }
       it { expect(cast('nexl.io')).not_to be_free_email }
     end
+
+    describe "#country" do
+      it { expect(cast('example.co.za').country).to eq(Country.cast("South Africa")) }
+      it { expect(cast('www.lawyers.af').country).to eq(Country.cast("Afghanistan")) }
+    end
   end
 end

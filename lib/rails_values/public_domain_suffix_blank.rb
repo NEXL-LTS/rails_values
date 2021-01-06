@@ -45,5 +45,9 @@ module RailsValues
     def subdomain
       self
     end
+
+    def country
+      Country.cast('')
+    end
   end
 end
