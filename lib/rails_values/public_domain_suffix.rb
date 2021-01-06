@@ -53,7 +53,7 @@ module RailsValues
       FREE_DOMAINS.bsearch { |x| to_str <=> x }.present?
     end
 
-    TLD_TO_COUNTRY = MultiJson.load(File.read("#{__dir__}/tld_to_country.json")).each_with_object({}) do |item,list|
+    TLD_TO_COUNTRY = MultiJson.load(File.read("#{__dir__}/tld_to_country.json")).each_with_object({}) do |item, list|
       tld = item['tld']
       next if item['tld'].blank?
 

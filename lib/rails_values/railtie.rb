@@ -1,4 +1,5 @@
 require_relative 'email_address_serializer'
+require_relative 'public_domain_suffix_serializer'
 
 ValueValidator = RailsValues::ValueValidator
 

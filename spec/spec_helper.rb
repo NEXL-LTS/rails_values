@@ -3,8 +3,8 @@ require 'byebug'
 
 if ENV['COVERAGE']
   require 'simplecov'
-  SimpleCov.minimum_coverage_by_file 75
-  SimpleCov.minimum_coverage 88
+  SimpleCov.minimum_coverage_by_file 78
+  SimpleCov.minimum_coverage 90
   SimpleCov.start
 end
 

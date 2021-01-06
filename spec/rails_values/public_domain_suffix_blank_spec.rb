@@ -13,6 +13,8 @@ module RailsValues
     end
 
     it { is_expected.to be_blank }
+    it { expect(subject.country).to be_blank }
+    it { expect(subject).not_to be_free_email }
 
     it 'can be sorted in an array with others' do
       countries = [PublicDomainSuffix.cast('testing.com'), subject, PublicDomainSuffix.cast('test.com')].sort
