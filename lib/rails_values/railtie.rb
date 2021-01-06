@@ -7,6 +7,7 @@ module RailsValues
   class Railtie < ::Rails::Railtie
     initializer 'rails_values_railtie.configure_rails_initialization' do
       Rails.application.config.active_job.custom_serializers << EmailAddressSerializer
+      Rails.application.config.active_job.custom_serializers << PublicDomainSuffixSerializer
       ActiveRecord::Type.register(:rv_country) do
         SimpleStringConverter.new(Country)
       end
