@@ -22,6 +22,7 @@ module RailsValues
     end
 
     delegate :to_s, :as_json, :hash, :tld, :sld, :trd, to: :content
+    delegate :as_json, to: :to_s
 
     def <=>(other)
       to_s <=> other.to_s
