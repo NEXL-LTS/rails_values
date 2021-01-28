@@ -9,6 +9,10 @@ module RailsValues
       @reason = reason
     end
 
+    def <=>(other)
+      @raw_value.to_s <=> other.to_s
+    end
+
     def ==(other)
       other.to_s == @raw_value.to_s
     end

@@ -62,6 +62,11 @@ module RailsValues
       only_regular ? regular_list.size : @list.size
     end
 
+    def include?(value)
+      value = EmailAddress.cast(value)
+      !@list.bsearch { |x| value <=> x }.nil?
+    end
+
     private
 
     def regular_list

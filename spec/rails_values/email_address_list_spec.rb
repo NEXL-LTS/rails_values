@@ -44,5 +44,17 @@ module RailsValues
       it { is_expected.not_to be_blank }
       it { is_expected.to be_exceptional }
     end
+
+    describe '#include?' do
+      it do
+        list = cast(['@cc', 'b@f.de', 'a@b.ci', 'a.a', 'broken', nil])
+        expect(list).to be_include('b@f.de')
+        expect(list).to be_include('a@b.ci')
+        expect(list).to be_include('broken')
+        expect(list).to be_include('@cc')
+        expect(list).to be_include('a.a')
+        expect(list).not_to be_include(nil) # blank values are dropped
+      end
+    end
   end
 end
