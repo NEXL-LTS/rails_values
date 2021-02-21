@@ -73,7 +73,11 @@ module RailsValues
       return PublicDomainSuffixBlank.new if content.blank?
       return content if content.is_a?(self)
 
-      new(String(content).downcase)
+      domain_text = String(content).downcase.strip
+      return ExceptionalValue.new(content) if domain_text.include?(' ')
+      return ExceptionalValue.new(content) if domain_text.start_with?('@')
+
+      new(domain_text)
     rescue ::PublicSuffix::Error, ArgumentError => e
       ExceptionalValue.new(content, e.message)
     end
