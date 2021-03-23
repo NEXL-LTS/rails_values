@@ -26,6 +26,9 @@ module RailsValues
       ActiveRecord::Type.register(:rv_http_url) do
         SimpleStringConverter.new(HttpUrl)
       end
+      ActiveRecord::Type.register(:rv_currency) do
+        SimpleStringConverter.new(CurrencyCasting)
+      end
     end
   end
 end
