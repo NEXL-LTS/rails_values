@@ -1,6 +1,7 @@
 require 'active_support'
 require 'active_model'
 require 'action_view'
+require 'money-rails'
 
 module RailsValues
   class Error < StandardError; end
@@ -18,6 +19,7 @@ require_relative 'rails_values/html_content'
 require_relative 'rails_values/country'
 require_relative 'rails_values/industry'
 require_relative 'rails_values/industry_list'
+require_relative 'rails_values/currency_casting'
 
 require_relative 'rails_values/simple_string_converter'
 require_relative 'rails_values/simple_json_converter'
