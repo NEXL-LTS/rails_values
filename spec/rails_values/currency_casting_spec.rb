@@ -1,19 +1,19 @@
-require 'rails_values'
+require 'rails_values/currency_casting'
 
 module RailsValues
   RSpec.describe CurrencyCasting do
     describe '#cast' do
-      context 'with valid currency' do
-        it{
-          expect(described_class.new.cast('USD')).to be_present
-          expect(described_class.new.cast('USD')).to eq(Money::Currency.find('USD')) 
-        }
+      context 'with valid currency string' do
+        it { expect(described_class.new.cast('USD')).to eq(Money::Currency.find('USD')) }
+      end
+
+      context 'with valid currency object' do
+        money = Money::Currency.find('USD')
+        it { expect(described_class.new.cast(money)).to eq(money) }
       end
 
       context 'with invalid currency' do
-        it{
-          expect(described_class.new.cast('XYZ')).to be_blank
-        }
+        it { expect(described_class.new.cast('XYZ')).to be_blank }
       end
     end
 

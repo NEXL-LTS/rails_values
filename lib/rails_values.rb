@@ -1,7 +1,6 @@
 require 'active_support'
 require 'active_model'
 require 'action_view'
-require 'money-rails'
 
 module RailsValues
   class Error < StandardError; end

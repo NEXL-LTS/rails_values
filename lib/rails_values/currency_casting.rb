@@ -1,3 +1,5 @@
+require 'money'
+
 module RailsValues
   class CurrencyCasting < ActiveModel::Type::Value
     def self.cast(value)
