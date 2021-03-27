@@ -75,7 +75,7 @@ module RailsValues
 
       domain_text = String(content).downcase.strip
       return ExceptionalValue.new(content) if domain_text.include?(' ')
-      return ExceptionalValue.new(content) if domain_text.start_with?('@')
+      return ExceptionalValue.new(content) if domain_text.include?('@')
 
       new(domain_text)
     rescue ::PublicSuffix::Error, ArgumentError => e

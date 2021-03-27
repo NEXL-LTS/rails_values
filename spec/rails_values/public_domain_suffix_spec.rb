@@ -105,6 +105,13 @@ module RailsValues
       expect(value).to be_exceptional
     end
 
+    it 'returns exceptional if contains "@"' do
+      value = cast('person@subastar.com.co')
+      expect(value.to_s).to eq('person@subastar.com.co')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
     it 'can compare email address' do
       expect(cast('mail.com')).to eq(cast('mail.com'))
       expect(cast('mail.com')).to eq(cast('MAIL.com'))
