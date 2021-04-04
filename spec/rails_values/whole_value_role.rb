@@ -6,7 +6,7 @@ RSpec.shared_examples 'Whole Value' do
 
   specify do
     expect(subject).to respond_to(:exceptional_errors)
-    active_record_errors = Hash.new { [] }
+    active_record_errors = ActiveModel::Errors.new(subject)
     subject.exceptional_errors(active_record_errors, :attribute_name, {})
   end
 

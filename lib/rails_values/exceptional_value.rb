@@ -46,7 +46,7 @@ module RailsValues
     delegate :blank?, :as_json, to: :to_s
 
     def exceptional_errors(errors, attribute, _options = nil)
-      errors[attribute] << @reason
+      errors.add(attribute, @reason)
     end
   end
 end
