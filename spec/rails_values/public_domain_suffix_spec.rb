@@ -131,6 +131,7 @@ module RailsValues
       it { expect(cast('app.nexl.io').country).to eq(Country.cast('')) }
       it { expect(cast('nexl.org').country).to eq(Country.cast('')) }
       it { expect(cast('example.com').country).to eq(Country.cast('')) }
+      it { expect(cast('example.co').country).to eq(Country.cast('')) }
     end
   end
 end
