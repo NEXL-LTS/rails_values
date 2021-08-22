@@ -23,6 +23,7 @@ module RailsValues
       value = cast('test@mail.com')
       expect(value.to_s).to eq('test@mail.com')
       expect(value).to be_present
+      expect(value).to be_free_email
       expect(value).not_to be_exceptional
     end
 
@@ -30,6 +31,7 @@ module RailsValues
       value = cast('')
       expect(value.to_s).to eq('')
       expect(value).to be_blank
+      expect(value).not_to be_free_email
       expect(value).not_to be_exceptional
     end
 
@@ -37,6 +39,7 @@ module RailsValues
       value = cast(nil)
       expect(value.to_s).to eq('')
       expect(value).to be_blank
+      expect(value).not_to be_free_email
       expect(value).not_to be_exceptional
     end
 
@@ -67,6 +70,7 @@ module RailsValues
       expect(value.to_s).to eq('person@4-node-dag')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
+      expect(value).not_to be_free_email
     end
 
     it 'returns exceptional if tlds does not exist' do
