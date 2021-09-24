@@ -112,6 +112,20 @@ module RailsValues
       expect(value).to be_exceptional
     end
 
+    it 'returns exceptional if starts with "?"' do
+      value = cast('?subastar.com.co')
+      expect(value.to_s).to eq('?subastar.com.co')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
+    it 'returns exceptional if contains invalid characters' do
+      value = cast('s[u]bastar.com.co')
+      expect(value.to_s).to eq('s[u]bastar.com.co')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
     it 'can compare email address' do
       expect(cast('mail.com')).to eq(cast('mail.com'))
       expect(cast('mail.com')).to eq(cast('MAIL.com'))
