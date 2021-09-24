@@ -74,7 +74,7 @@ module RailsValues
       return content if content.is_a?(self)
 
       domain_text = String(content).downcase.strip
-      return ExceptionalValue.new(content) unless /^[a-z0-9\-.]*$/.match?(domain_text)
+      return ExceptionalValue.new(content) unless /^[a-z0-9\-._]*$/.match?(domain_text)
 
       new(domain_text)
     rescue ::PublicSuffix::Error, ArgumentError => e

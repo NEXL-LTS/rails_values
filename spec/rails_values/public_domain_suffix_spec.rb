@@ -46,6 +46,13 @@ module RailsValues
       expect(value).not_to be_exceptional
     end
 
+    it 'accepts underscores' do
+      value = cast('under_score.com')
+      expect(value.to_s).to eq('under_score.com')
+      expect(value).to be_present
+      expect(value).not_to be_exceptional
+    end
+
     it 'can handle blank' do
       value = cast('')
       expect(value.to_s).to eq('')
