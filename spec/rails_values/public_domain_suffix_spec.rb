@@ -53,6 +53,13 @@ module RailsValues
       expect(value).not_to be_exceptional
     end
 
+    it 'accepts other printable characters' do
+      value = cast('oñí.com')
+      expect(value.to_s).to eq('oñí.com')
+      expect(value).to be_present
+      expect(value).not_to be_exceptional
+    end
+
     it 'can handle blank' do
       value = cast('')
       expect(value.to_s).to eq('')
@@ -91,7 +98,7 @@ module RailsValues
         .to contain_exactly('Public domain suffix has invalid tld of coc')
     end
 
-    it 'returns exceptional if includes invalid characters' do
+    it 'returns exceptional if starts with "."' do
       value = cast('.tes.com')
       expect(value.to_s).to eq('.tes.com')
       expect(value).not_to be_blank
@@ -101,6 +108,13 @@ module RailsValues
     it 'returns exceptional if includes spaces' do
       value = cast('subastar .com.co')
       expect(value.to_s).to eq('subastar .com.co')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
+    it 'returns exceptional if includes commas' do
+      value = cast('macan.com,sg')
+      expect(value.to_s).to eq('macan.com,sg')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
     end
@@ -126,6 +140,27 @@ module RailsValues
       expect(value).to be_exceptional
     end
 
+    it 'returns exceptional if contains "&"' do
+      value = cast('allen&overy.com')
+      expect(value.to_s).to eq('allen&overy.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
+    it 'returns exceptional if contains "\'"' do
+      value = cast('have\'younot.com')
+      expect(value.to_s).to eq('have\'younot.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
+    it 'returns exceptional if contains "/"' do
+      value = cast('aaa/calif.com')
+      expect(value.to_s).to eq('aaa/calif.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
     it 'returns exceptional if contains invalid characters' do
       value = cast('s[u]bastar.com.co')
       expect(value.to_s).to eq('s[u]bastar.com.co')
@@ -133,7 +168,7 @@ module RailsValues
       expect(value).to be_exceptional
     end
 
-    it 'can compare email address' do
+    it 'can compare' do
       expect(cast('mail.com')).to eq(cast('mail.com'))
       expect(cast('mail.com')).to eq(cast('MAIL.com'))
       expect(cast('other.com')).not_to eq(cast('mail.com'))
