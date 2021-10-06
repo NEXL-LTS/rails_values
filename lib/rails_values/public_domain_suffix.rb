@@ -83,6 +83,10 @@ module RailsValues
       ExceptionalValue.new(content, e.message)
     end
 
+    def self.is?(value)
+      cast(value).regular?
+    end
+
     protected
 
     attr_reader :content
