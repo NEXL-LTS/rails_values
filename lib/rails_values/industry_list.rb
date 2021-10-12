@@ -41,7 +41,7 @@ module RailsValues
 
     def exceptional_errors(errors, attribute, _options = nil)
       select(&:exceptional?).each do |invalid_value|
-        errors[attribute] << invalid_value.reason
+        errors.add(attribute, invalid_value.reason)
       end
     end
 

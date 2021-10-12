@@ -33,7 +33,7 @@ module RailsValues
     end
 
     def exceptional_errors(errors, attribute, _options = nil)
-      errors[attribute] << "has a invalid value of #{self}" if exceptional?
+      errors.add(attribute, "has a invalid value of #{self}") if exceptional?
     end
 
     delegate :blank?, to: :to_s

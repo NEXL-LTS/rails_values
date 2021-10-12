@@ -38,7 +38,7 @@ module RailsValues
 
     def exceptional_errors(errors, attribute, _options = nil)
       @list.select(&:exceptional?).each do |invalid_email|
-        errors[attribute] << invalid_email.reason
+        errors.add(attribute, invalid_email.reason)
       end
     end
 
