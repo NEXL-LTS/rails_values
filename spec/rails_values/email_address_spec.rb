@@ -73,6 +73,15 @@ module RailsValues
       expect(value).not_to be_free_email
     end
 
+    it 'returns exceptional if domain with double ..' do
+      value = cast('saljubis01@yahoo.com..my')
+      expect(value.to_s).to eq('saljubis01@yahoo.com..my')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+      expect(value.domain).to be_exceptional
+      expect(value).not_to be_free_email
+    end
+
     it 'returns exceptional if tlds does not exist' do
       value = cast('wesdfcds@wsdx.coc')
       expect(value.to_s).to eq('wesdfcds@wsdx.coc')

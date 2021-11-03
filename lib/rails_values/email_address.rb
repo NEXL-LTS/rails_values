@@ -29,7 +29,7 @@ module RailsValues
     delegate :hash, to: :to_s
 
     def exceptional?
-      present? && domain.blank? || subdomain.exceptional?
+      (present? && domain.blank?) || subdomain.exceptional? || domain.exceptional?
     end
 
     def exceptional_errors(errors, attribute, _options = nil)
