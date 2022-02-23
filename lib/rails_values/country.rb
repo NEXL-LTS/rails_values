@@ -102,7 +102,7 @@ module RailsValues
       return content if content.is_a? self
       return BlankCountry.new if content.blank?
 
-      content = 'GB' if content == 'UK'
+      content = 'GB' if %w[UK England].include?(content)
 
       country = ISO3166::Country.send(:[], content) ||
                 ISO3166::Country.find_country_by_alpha3(content) ||

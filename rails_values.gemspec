@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'rails_values'
-  spec.version       = '1.0.0'
+  spec.version       = '1.0.1'
   spec.authors       = ['grant']
   spec.email         = ['grant@nexl.io']
 
@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'money', '>= 6.13.2', '< 7.0'
   spec.add_dependency 'multi_json', '>= 1.0.0', '< 2.0'
   spec.add_dependency 'public_suffix', '< 5.0'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

@@ -53,16 +53,20 @@ module RailsValues
       expect(country).to be_exceptional
     end
 
-    it 'returns USD currency for Tuvalu' do
+    it 'returns AUD currency for Tuvalu' do
       country = described_class.cast('Tuvalu')
       expect(country.to_s).to eq('TV')
-      expect(country.currency_code).to eq('USD')
+      expect(country.currency_code).to eq('AUD')
       expect(country).to be_present
       expect(country).not_to be_exceptional
     end
 
     it 'accepts "UK" as "GB"' do
       expect(described_class.cast('UK')).to eq(described_class.cast('GB'))
+    end
+
+    it 'accepts "England" as "GB"' do
+      expect(described_class.cast('England')).to eq(described_class.cast('GB'))
     end
   end
 end
