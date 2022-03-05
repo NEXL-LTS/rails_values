@@ -25,7 +25,9 @@ module RailsValues
     delegate :as_json, to: :to_s
 
     def <=>(other)
-      to_s <=> other.to_s
+      return to_str <=> other.to_s if other.nil?
+
+      to_str <=> other.to_str
     end
 
     def eql?(other)

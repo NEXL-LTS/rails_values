@@ -8,6 +8,7 @@
 /tmp/
 /vendor/bundle
 /gems.locked
+/Gemfile.lock
 /.byebug_history
 # rspec failure tracking
 .rspec_status

@@ -3,7 +3,7 @@ require 'rails_values/email_address'
 
 module RailsValues
   RSpec.describe SimpleStringConverter do
-    let(:subject) { described_class.new(EmailAddress) }
+    subject { described_class.new(EmailAddress) }
 
     it 'can cast and serialize' do
       value = EmailAddress.cast('my.mail@gmail.com')

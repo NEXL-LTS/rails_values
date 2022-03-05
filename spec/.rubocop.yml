@@ -32,3 +32,6 @@ RSpec/MultipleExpectations:
 
 RSpec/NamedSubject:
   Enabled: false
+
+RSpec/IdenticalEqualityAssertion:
+  Enabled: false

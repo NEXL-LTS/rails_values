@@ -3,7 +3,7 @@ require 'rails_values/industry_list'
 
 module RailsValues
   RSpec.describe SimpleJsonConverter do
-    let(:subject) { described_class.new(IndustryList) }
+    subject { described_class.new(IndustryList) }
 
     it 'can cast and serialize' do
       value = IndustryList.cast(%w[101010 202010])

@@ -5,6 +5,8 @@ module RailsValues
     include Comparable
 
     def <=>(other)
+      return to_str <=> other.to_s if other.nil?
+
       to_str <=> other.to_str
     end
 

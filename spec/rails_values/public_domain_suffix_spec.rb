@@ -103,6 +103,8 @@ module RailsValues
       expect(value.to_s).to eq('.tes.com')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
+      val_nil = nil
+      expect(value == val_nil).to be_falsy
     end
 
     it 'returns exceptional if includes spaces' do

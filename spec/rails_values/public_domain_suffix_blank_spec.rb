@@ -25,5 +25,10 @@ module RailsValues
     it 'can be used with uniq' do
       expect([subject, described_class.new].uniq).to contain_exactly(subject)
     end
+
+    it 'can be compared with nil' do
+      nil_value = nil
+      expect(subject == nil_value).to be_truthy
+    end
   end
 end
