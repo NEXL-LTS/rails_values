@@ -21,9 +21,18 @@ module RailsValues
     end
 
     delegate :hash, to: :to_s
+    delegate :path, :host, :scheme, :port, :query, :fragment, to: :url
 
     def exceptional?
-      present? && !(url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS))
+      return false if blank?
+
+      return true unless url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
+
+      host.blank?
+    end
+
+    def secure?
+      url.is_a?(URI::HTTPS)
     end
 
     def exceptional_errors(errors, attribute, _options = nil)

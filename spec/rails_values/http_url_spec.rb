@@ -22,22 +22,32 @@ module RailsValues
     it 'can be created' do
       value = cast('http://www.example.com/page')
       expect(value.to_s).to eq('http://www.example.com/page')
+      expect(value.host).to eq('www.example.com')
+      expect(value.path).to eq('/page')
+      expect(value.scheme).to eq('http')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value).not_to be_secure
     end
 
     it 'can be created with https' do
       value = cast('https://www.example.com/page')
       expect(value.to_s).to eq('https://www.example.com/page')
+      expect(value.scheme).to eq('https')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value).to be_secure
     end
 
     it 'can handle blank' do
       value = cast('')
-      expect(value.to_s).to eq('')
       expect(value).to be_blank
       expect(value).not_to be_exceptional
+      expect(value.to_s).to eq('')
+      expect(value.scheme).to be_nil
+      expect(value.host).to be_nil
+      expect(value.path).to eq('')
+      expect(value).not_to be_secure
     end
 
     it 'can handle nil' do
@@ -45,6 +55,11 @@ module RailsValues
       expect(value.to_s).to eq('')
       expect(value).to be_blank
       expect(value).not_to be_exceptional
+      expect(value.to_s).to eq('')
+      expect(value.scheme).to be_nil
+      expect(value.host).to be_nil
+      expect(value.path).to eq('')
+      expect(value).not_to be_secure
     end
 
     it 'returns exceptional if only path' do
@@ -52,6 +67,8 @@ module RailsValues
       expect(value.to_s).to eq('/my_network')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
+      expect(value.to_s).to eq('/my_network')
+      expect(value).not_to be_secure
 
       record = SimpleModel.new
       value.exceptional_errors(record.errors, :email, {})
@@ -64,6 +81,21 @@ module RailsValues
       expect(value.to_s).to eq('ftp://other/')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
+      expect(value.scheme).to eq('ftp')
+      expect(value.host).to eq('other')
+      expect(value.path).to eq('')
+      expect(value).not_to be_secure
+    end
+
+    it 'returns exceptional if only protocol' do
+      value = cast('http://')
+      expect(value.to_s).to eq('http:')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+      expect(value.scheme).to eq('http')
+      expect(value.host).to be_nil
+      expect(value.path).to eq('')
+      expect(value).not_to be_secure
     end
 
     it 'can compare' do
