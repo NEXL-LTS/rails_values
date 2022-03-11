@@ -67,5 +67,11 @@ module RailsValues
     it 'accepts "England" as "GB"' do
       expect(described_class.cast('England')).to eq(described_class.cast('GB'))
     end
+
+    it 'can compare' do
+      expect(described_class.cast('England')).to eq(described_class.cast('England'))
+      expect(described_class.cast('England')).not_to eq(described_class.cast('Holy See (Vatican City State)'))
+      expect(described_class.cast('England')).not_to eq(described_class.cast(''))
+    end
   end
 end

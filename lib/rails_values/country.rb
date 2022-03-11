@@ -19,7 +19,11 @@ module RailsValues
     delegate :as_json, to: :alpha2
 
     def <=>(other)
-      alpha2 <=> other.alpha2
+      if other.is_a?(ExceptionalValue)
+        other.to_s <=> to_s
+      else
+        alpha2 <=> other.alpha2
+      end
     end
 
     def eql?(other)
