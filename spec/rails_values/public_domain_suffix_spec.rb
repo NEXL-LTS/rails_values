@@ -179,6 +179,8 @@ module RailsValues
     describe '#free_email?' do
       it { expect(cast('gmail.com')).to be_free_email }
       it { expect(cast('me.com')).to be_free_email }
+      it { expect(cast('privaterelay.appleid.com')).to be_free_email }
+
       it { expect(cast('nexl.io')).not_to be_free_email }
     end
 
