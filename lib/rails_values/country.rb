@@ -107,13 +107,18 @@ module RailsValues
       return BlankCountry.new if content.blank?
 
       content = 'GB' if %w[UK England].include?(content)
+      content = 'VA' if content == 'Holy See (Vatican City State)'
 
-      country = ISO3166::Country.send(:[], content) ||
-                ISO3166::Country.find_country_by_alpha3(content) ||
-                ISO3166::Country.find_country_by_name(content)
+      country = find_iso_country(content)
       return Country.new(country) if country
 
       ExceptionalValue.new(content, "has a invalid value of #{content}")
+    end
+
+    def self.find_iso_country(content)
+      ISO3166::Country.send(:[], content) ||
+        ISO3166::Country.find_country_by_alpha3(content) ||
+        ISO3166::Country.find_country_by_name(content)
     end
 
     def self.is?(value)

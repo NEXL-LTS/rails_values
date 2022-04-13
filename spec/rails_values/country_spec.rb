@@ -60,6 +60,14 @@ module RailsValues
       expect(country).not_to be_exceptional
     end
 
+    it 'accepts Holy See (Vatican City State)' do
+      country = described_class.cast('Holy See (Vatican City State)')
+      expect(country.to_s).to eq('VA')
+      expect(country).to be_present
+      expect(country).not_to be_exceptional
+      expect(country.name).to eq('Holy See (Vatican City State)')
+    end
+
     it 'accepts "UK" as "GB"' do
       expect(described_class.cast('UK')).to eq(described_class.cast('GB'))
     end
