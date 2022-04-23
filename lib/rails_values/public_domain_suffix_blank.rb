@@ -4,6 +4,10 @@ module RailsValues
   class PublicDomainSuffixBlank < Blank
     include Comparable
 
+    def initialize(content = '')
+      @content = content
+    end
+
     def <=>(other)
       return to_str <=> other.to_s if other.nil?
 
@@ -50,6 +54,10 @@ module RailsValues
 
     def country
       Country.cast('')
+    end
+
+    def to_db
+      @content&.to_s
     end
   end
 end

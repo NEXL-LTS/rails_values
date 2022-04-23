@@ -7,7 +7,7 @@ module RailsValues
     end
 
     def serialize(domain)
-      super('value' => domain.to_str)
+      super('value' => domain.to_db)
     end
 
     def deserialize(hash)

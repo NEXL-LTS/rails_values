@@ -46,6 +46,10 @@ module RailsValues
       to_s
     end
 
+    def to_db
+      content&.to_s
+    end
+
     # @return [EmailAddress]
     def local_email(local_part)
       EmailAddress.cast("#{local_part}@#{content}")
@@ -72,7 +76,7 @@ module RailsValues
     end
 
     def self.cast(content)
-      return PublicDomainSuffixBlank.new if content.blank?
+      return PublicDomainSuffixBlank.new(content) if content.blank?
       return content if content.is_a?(self)
 
       domain_text = String(content).downcase.strip
