@@ -6,6 +6,7 @@ module RailsValues
 
     def initialize(content = '')
       @content = content
+      super()
     end
 
     def <=>(other)

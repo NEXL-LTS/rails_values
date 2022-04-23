@@ -18,13 +18,13 @@ module RailsValues
     it 'serializes nil as nil' do
       value = PublicDomainSuffix.cast(nil)
       value_serialized = subject.serialize(value)
-      expect(value_serialized["value"]).to be_nil
+      expect(value_serialized['value']).to be_nil
     end
 
     it 'serializes empty string as empty string' do
       value = PublicDomainSuffix.cast('')
       value_serialized = subject.serialize(value)
-      expect(value_serialized["value"]).to eq('')
+      expect(value_serialized['value']).to eq('')
     end
   end
 end
