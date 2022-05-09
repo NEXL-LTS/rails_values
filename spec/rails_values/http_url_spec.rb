@@ -2,7 +2,7 @@ require 'rails_values/http_url'
 
 module RailsValues
   RSpec.describe HttpUrl do
-    require_relative 'whole_value_role'
+    require 'rails_values/rspec/whole_value_role'
     it_behaves_like 'Whole Value' do
       subject { described_class.new('http://www.example.com') }
     end

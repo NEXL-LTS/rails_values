@@ -2,7 +2,7 @@ require 'rails_values/country'
 
 module RailsValues
   RSpec.describe BlankCountry do
-    require_relative './whole_value_role'
+    require 'rails_values/rspec/whole_value_role'
     it_behaves_like 'Whole Value' do
       subject { described_class.new }
     end

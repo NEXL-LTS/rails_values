@@ -2,7 +2,7 @@ require 'rails_values/industry'
 
 module RailsValues
   RSpec.describe Industry do
-    require_relative 'whole_value_role'
+    require 'rails_values/rspec/whole_value_role'
     it_behaves_like 'Whole Value' do
       subject { described_class.new(202_010) }
     end

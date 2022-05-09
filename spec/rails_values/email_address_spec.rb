@@ -2,7 +2,7 @@ require 'rails_values/email_address'
 
 module RailsValues
   RSpec.describe EmailAddress do
-    require_relative 'whole_value_role'
+    require 'rails_values/rspec/whole_value_role'
     it_behaves_like 'Whole Value' do
       subject { described_class.new('test@mail.com') }
     end
