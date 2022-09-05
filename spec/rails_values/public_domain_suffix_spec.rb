@@ -170,6 +170,13 @@ module RailsValues
       expect(value).to be_exceptional
     end
 
+    it 'returns exceptional if contains https' do
+      value = cast('https:frontier.com')
+      expect(value.to_s).to eq('https:frontier.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
     it 'can compare' do
       expect(cast('mail.com')).to eq(cast('mail.com'))
       expect(cast('mail.com')).to eq(cast('MAIL.com'))

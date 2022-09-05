@@ -84,6 +84,8 @@ module RailsValues
         return ExceptionalValue.new(content)
       end
 
+      return ExceptionalValue.new(content) if domain_text.include?(':')
+
       new(domain_text)
     rescue ::PublicSuffix::Error, ArgumentError => e
       ExceptionalValue.new(content, e.message)
