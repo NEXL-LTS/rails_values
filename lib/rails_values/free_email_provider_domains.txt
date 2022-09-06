@@ -3201,6 +3201,7 @@ sify.com
 silkroad.net
 sina.cn
 sina.com
+sina.com.cn
 sinamail.com
 singapore.com
 singmail.com
@@ -3466,6 +3467,8 @@ tiscali.it
 tiscali.lu
 tiscali.se
 tkcity.com
+tom.cn
+tom.com.cn
 toolsource.com
 topchat.com
 topgamers.co.uk
