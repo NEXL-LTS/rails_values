@@ -3357,6 +3357,7 @@ telenet.be
 telerymd.com
 teleserve.dynip.com
 teletu.it
+telfortmail.nl
 telinco.net
 telkom.net
 telpage.net
