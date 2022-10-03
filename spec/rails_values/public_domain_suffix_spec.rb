@@ -177,6 +177,13 @@ module RailsValues
       expect(value).to be_exceptional
     end
 
+    it 'returns exceptional if contains ..' do
+      value = cast('aristocrat.com..\..\..\..\..\..\..\..\..\..\..\..\..\..\..\..\winnt\win.ini')
+      expect(value.to_s).to eq('aristocrat.com..\..\..\..\..\..\..\..\..\..\..\..\..\..\..\..\winnt\win.ini')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
     it 'can compare' do
       expect(cast('mail.com')).to eq(cast('mail.com'))
       expect(cast('mail.com')).to eq(cast('MAIL.com'))

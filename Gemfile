@@ -11,5 +11,4 @@ gem 'rubocop'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
 gem 'simplecov', '>= 0.18.5'
-
-gem "ruby-lsp", "~> 0.3.0", :group => :development
+gem 'ruby-lsp', '>= 0.3.0'
