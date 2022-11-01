@@ -55,6 +55,10 @@ module RailsValues
       EmailAddress.cast("#{local_part}@#{content}")
     end
 
+    def second_level_domain
+      content&.to_s&.split('.')&.first
+    end
+
     FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).sort.freeze
     def free_email?
       FREE_DOMAINS.bsearch { |x| to_str <=> x }.present?

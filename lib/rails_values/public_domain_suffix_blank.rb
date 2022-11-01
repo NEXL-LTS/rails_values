@@ -60,5 +60,9 @@ module RailsValues
     def to_db
       @content&.to_s
     end
+
+    def second_level_domain
+      ''
+    end
   end
 end
