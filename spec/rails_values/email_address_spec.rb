@@ -17,6 +17,7 @@ module RailsValues
       expect(first_cast).to eq(second_cast)
       expect(first_cast).to eql(second_cast)
       expect([first_cast, second_cast].uniq).to have_attributes(size: 1)
+      expect(first_cast).to eq('Test@mail.com')
     end
 
     it 'can be created' do

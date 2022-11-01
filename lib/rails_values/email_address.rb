@@ -19,7 +19,7 @@ module RailsValues
     delegate :as_json, to: :to_s
 
     def <=>(other)
-      to_s <=> other.to_s
+      to_s <=> other.to_s.downcase
     end
 
     def eql?(other)
