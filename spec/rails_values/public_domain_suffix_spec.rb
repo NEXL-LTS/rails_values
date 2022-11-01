@@ -207,5 +207,18 @@ module RailsValues
       it { expect(cast('example.com').country).to eq(Country.cast('')) }
       it { expect(cast('example.co').country).to eq(Country.cast('')) }
     end
+
+    describe '#second_level_domain' do
+      it {
+        value = cast('nexl.com.au')
+        expect(value.second_level_domain).to eq('nexl')
+
+        value = cast('nexl.com')
+        expect(value.second_level_domain).to eq('nexl')
+
+        value = cast('')
+        expect(value.second_level_domain).to eq('')
+      }
+    end
   end
 end
