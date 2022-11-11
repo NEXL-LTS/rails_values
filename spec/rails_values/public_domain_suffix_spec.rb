@@ -213,6 +213,12 @@ module RailsValues
         value = cast('nexl.com.au')
         expect(value.second_level_domain).to eq('nexl')
 
+        value = cast('dentons.rodik.com.au')
+        expect(value.second_level_domain).to eq('dentons.rodik')
+
+        value = cast('dentons.rodik.fr')
+        expect(value.second_level_domain).to eq('dentons.rodik')
+
         value = cast('nexl.com')
         expect(value.second_level_domain).to eq('nexl')
 
