@@ -56,7 +56,15 @@ module RailsValues
     end
 
     def second_level_domain
-      content&.to_s&.split('.')&.first
+      domain_parts = content&.to_s&.split('.')
+
+      domain_end_index = domain_parts.find_index { |part| %w[com co net biz gov org].include?(part) }
+      return domain_parts[0..domain_end_index - 1].join('.') if domain_end_index
+
+      domain_end_index = domain_parts.find_index { |part| ISO3166::Country.codes.include?(part.upcase) }
+      return domain_parts[0..domain_end_index - 1].join('.') if domain_end_index
+
+      ''
     end
 
     FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).sort.freeze
