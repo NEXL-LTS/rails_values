@@ -18,6 +18,15 @@ module RailsValues
       expect(value).not_to be_exceptional
     end
 
+    it 'is equal' do
+      first_cast = cast('mail.com')
+      second_cast = cast('mail.com')
+      expect(first_cast).to eq(second_cast)
+      expect(first_cast).to eql(second_cast)
+      expect([first_cast, second_cast].uniq).to have_attributes(size: 1)
+      expect(first_cast).to eq('mail.com')
+    end
+
     it 'can be created with long root domain' do
       value = cast('adams.africa')
       expect(value.to_s).to eq('adams.africa')

@@ -21,8 +21,8 @@ module RailsValues
       freeze
     end
 
-    delegate :to_s, :as_json, :hash, :tld, :sld, :trd, to: :content
-    delegate :as_json, to: :to_s
+    delegate :to_s, :as_json, :tld, :sld, :trd, to: :content
+    delegate :as_json, :hash, to: :to_s
 
     def <=>(other)
       return to_str <=> other.to_s if other.nil?
