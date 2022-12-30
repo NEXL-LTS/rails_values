@@ -61,7 +61,7 @@ module RailsValues
       @content&.to_s
     end
 
-    def second_level_domain
+    def client_level_domain
       ''
     end
   end

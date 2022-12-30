@@ -15,8 +15,15 @@ module RailsValues
     TOP_LEVEL_DOMAINS = File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp).freeze
 
     def initialize(content)
-      @content = PublicSuffix.parse(content).freeze
-      raise ArgumentError, "has invalid tld of #{tld}" unless TOP_LEVEL_DOMAINS.any? { |d| content.upcase.end_with?(d) }
+      raise ArgumentError, 'has invalid tld' unless TOP_LEVEL_DOMAINS.any? { |d| content.upcase.end_with?(d) }
+
+      tld_exception = content.include?('.') && PublicSuffix::List.default.find(content).value == content
+
+      @content = if tld_exception
+                   PublicSuffix::Domain.new(content, nil, nil)
+                 else
+                   PublicSuffix.parse(content).freeze
+                 end
 
       freeze
     end
@@ -55,16 +62,8 @@ module RailsValues
       EmailAddress.cast("#{local_part}@#{content}")
     end
 
-    def second_level_domain
-      domain_parts = content&.to_s&.split('.')
-
-      domain_end_index = domain_parts.find_index { |part| %w[com co net biz gov org].include?(part) }
-      return domain_parts[0..domain_end_index - 1].join('.') if domain_end_index
-
-      domain_end_index = domain_parts.find_index { |part| ISO3166::Country.codes.include?(part.upcase) }
-      return domain_parts[0..domain_end_index - 1].join('.') if domain_end_index
-
-      ''
+    def client_level_domain
+      [trd, sld].compact.join('.')
     end
 
     FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).sort.freeze

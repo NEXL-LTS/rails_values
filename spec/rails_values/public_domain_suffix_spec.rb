@@ -32,6 +32,9 @@ module RailsValues
       expect(value.to_s).to eq('adams.africa')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value.tld).to eq('africa')
+      expect(value.sld).to eq('adams')
+      expect(value.trd).to be_nil
     end
 
     it 'accepts longer root domain' do
@@ -39,6 +42,9 @@ module RailsValues
       expect(value.to_s).to eq('test.americanexpress')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value.tld).to eq('americanexpress')
+      expect(value.sld).to eq('test')
+      expect(value.trd).to be_nil
     end
 
     it 'accepts nexl.com.au' do
@@ -46,6 +52,29 @@ module RailsValues
       expect(value.to_s).to eq('nexl.com.au')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value.tld).to eq('com.au')
+      expect(value.sld).to eq('nexl')
+      expect(value.trd).to be_nil
+    end
+
+    it 'accepts eu.nexl.cloud' do
+      value = cast('eu.nexl.cloud')
+      expect(value.to_s).to eq('eu.nexl.cloud')
+      expect(value).to be_present
+      expect(value).not_to be_exceptional
+      expect(value.tld).to eq('cloud')
+      expect(value.sld).to eq('nexl')
+      expect(value.trd).to eq('eu')
+    end
+
+    it 'accepts gov.uk' do
+      value = cast('gov.uk')
+      expect(value.to_s).to eq('gov.uk')
+      expect(value).to be_present
+      expect(value).not_to be_exceptional
+      expect(value.tld).to eq('gov.uk')
+      expect(value.sld).to be_nil
+      expect(value.trd).to be_nil
     end
 
     it 'accepts numbers and dashes' do
@@ -53,6 +82,9 @@ module RailsValues
       expect(value.to_s).to eq('xn--85x722f.xn--55qx5d.cn')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value.tld).to eq('cn')
+      expect(value.sld).to eq('xn--55qx5d')
+      expect(value.trd).to eq('xn--85x722f')
     end
 
     it 'accepts underscores' do
@@ -104,7 +136,7 @@ module RailsValues
       record = SimpleModel.new
       value.exceptional_errors(record.errors, :public_domain_suffix, {})
       expect(record.errors.full_messages)
-        .to contain_exactly('Public domain suffix has invalid tld of coc')
+        .to contain_exactly('Public domain suffix has invalid tld')
     end
 
     it 'returns exceptional if starts with "."' do
@@ -217,22 +249,22 @@ module RailsValues
       it { expect(cast('example.co').country).to eq(Country.cast('')) }
     end
 
-    describe '#second_level_domain' do
+    describe '#client_level_domain' do
       it {
         value = cast('nexl.com.au')
-        expect(value.second_level_domain).to eq('nexl')
+        expect(value.client_level_domain).to eq('nexl')
 
         value = cast('dentons.rodik.com.au')
-        expect(value.second_level_domain).to eq('dentons.rodik')
+        expect(value.client_level_domain).to eq('dentons.rodik')
 
         value = cast('dentons.rodik.fr')
-        expect(value.second_level_domain).to eq('dentons.rodik')
+        expect(value.client_level_domain).to eq('dentons.rodik')
 
         value = cast('nexl.com')
-        expect(value.second_level_domain).to eq('nexl')
+        expect(value.client_level_domain).to eq('nexl')
 
         value = cast('')
-        expect(value.second_level_domain).to eq('')
+        expect(value.client_level_domain).to eq('')
       }
     end
   end
