@@ -28,6 +28,14 @@ module RailsValues
       expect(value).not_to be_exceptional
     end
 
+    it 'can be created with privaterelay.appleid.com' do
+      value = cast('test@privaterelay.appleid.com')
+      expect(value.to_s).to eq('test@privaterelay.appleid.com')
+      expect(value).to be_present
+      expect(value).to be_free_email
+      expect(value).not_to be_exceptional
+    end
+
     it 'can handle blank' do
       value = cast('')
       expect(value.to_s).to eq('')

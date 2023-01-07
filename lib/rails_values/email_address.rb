@@ -67,7 +67,7 @@ module RailsValues
     end
 
     def free_email?
-      !exceptional? && domain.free_email?
+      !exceptional? && subdomain.free_email?
     end
 
     def inspect
