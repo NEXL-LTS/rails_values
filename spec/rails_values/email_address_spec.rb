@@ -106,5 +106,11 @@ module RailsValues
     it 'can be converted to json' do
       expect(cast('My@mail.com').as_json).to eq('my@mail.com')
     end
+
+    describe '#free_email?' do
+      it { expect(cast('My@mail.com')).to be_free_email }
+      it { expect(cast('person.email@telstra.com')).not_to be_free_email }
+      it { expect(cast('c732841@telstra.com')).to be_free_email }
+    end
   end
 end
