@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
   spec.name          = 'rails_values'
-  spec.version       = '1.0.1'
+  spec.version       = '1.0.2'
   spec.authors       = ['grant']
   spec.email         = ['grant@nexl.io']
 
   spec.summary       = 'Basic Rich types in your rails models'
-  spec.description   = 'Use EmailAddress, Subdomain, Country, HttpUrl types in your rails models'
+  spec.description   = 'Use EmailAddress, PublicDomainSuffix, Country, HttpUrl types in your rails models'
   spec.homepage      = 'https://github.com/NEXL-LTS/rails_values'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
 
