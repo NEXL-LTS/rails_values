@@ -89,11 +89,11 @@ module RailsValues
 
     it 'returns exceptional if only protocol' do
       value = cast('http://')
-      expect(value.to_s).to eq('http:')
+      expect(value.to_s).to eq('http://')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
       expect(value.scheme).to eq('http')
-      expect(value.host).to be_nil
+      expect(value.host).to eq('')
       expect(value.path).to eq('')
       expect(value).not_to be_secure
     end

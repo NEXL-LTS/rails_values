@@ -62,6 +62,8 @@ module RailsValues
       expect(value.to_s).to eq('eu.nexl.cloud')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value.domain).to eq('nexl.cloud')
+      expect(value.subdomain).to eq('eu.nexl.cloud')
       expect(value.tld).to eq('cloud')
       expect(value.sld).to eq('nexl')
       expect(value.trd).to eq('eu')
@@ -72,7 +74,21 @@ module RailsValues
       expect(value.to_s).to eq('gov.uk')
       expect(value).to be_present
       expect(value).not_to be_exceptional
+      expect(value.domain).to eq('gov.uk')
+      expect(value.subdomain).to eq('gov.uk')
       expect(value.tld).to eq('gov.uk')
+      expect(value.sld).to be_nil
+      expect(value.trd).to be_nil
+    end
+
+    it 'accepts mil.no' do
+      value = cast('mil.no')
+      expect(value.to_s).to eq('mil.no')
+      expect(value).to be_present
+      expect(value).not_to be_exceptional
+      expect(value.domain).to eq('mil.no')
+      expect(value.subdomain).to eq('mil.no')
+      expect(value.tld).to eq('mil.no')
       expect(value.sld).to be_nil
       expect(value.trd).to be_nil
     end
