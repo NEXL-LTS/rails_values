@@ -58,7 +58,7 @@ module RailsValues
 
       content = String(content).downcase
 
-      if /^[\w\-#]+([\-.]{1}[\w\-]+)*\.[\w\-]{1,128}$/.match?(content) &&
+      if /^[\w\-#]+([-.]{1}[\w-]+)*\.[\w-]{1,128}$/.match?(content) &&
          TOP_LEVEL_DOMAINS.any? { |tld| content.upcase.end_with?(tld) }
         Subdomain.new(content)
       else
