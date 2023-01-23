@@ -36,6 +36,14 @@ module RailsValues
       expect(value).not_to be_exceptional
     end
 
+    it 'can be created with marbrathen@mil.no' do
+      value = cast('marbrathen@mil.no')
+      expect(value.to_s).to eq('marbrathen@mil.no')
+      expect(value).to be_present
+      expect(value).not_to be_free_email
+      expect(value).not_to be_exceptional
+    end
+
     it 'can handle blank' do
       value = cast('')
       expect(value.to_s).to eq('')

@@ -57,7 +57,7 @@ module RailsValues
 
       new(value)
     rescue URI::InvalidURIError => e
-      ExceptionalValue.new(e.message)
+      ExceptionalValue.new(value, e.message)
     end
   end
 end

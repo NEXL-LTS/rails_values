@@ -17,9 +17,9 @@ module RailsValues
     def initialize(content)
       raise ArgumentError, 'has invalid tld' unless TOP_LEVEL_DOMAINS.any? { |d| content.upcase.end_with?(d) }
 
-      tld_exception = content.include?('.') && PublicSuffix::List.default.find(content).value == content
+      @tld_exception = content.include?('.') && PublicSuffix::List.default.find(content).value == content
 
-      @content = if tld_exception
+      @content = if @tld_exception
                    PublicSuffix::Domain.new(content, nil, nil)
                  else
                    PublicSuffix.parse(content).freeze
@@ -42,10 +42,14 @@ module RailsValues
     end
 
     def domain
+      return self if @tld_exception
+
       self.class.cast(content.domain)
     end
 
     def subdomain
+      return self if @tld_exception
+
       self.class.cast(content.subdomain)
     end
 
