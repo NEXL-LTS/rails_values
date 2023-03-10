@@ -240,6 +240,7 @@ bestweb.net
 bettergolf.net
 bev.net
 bezeqint.net
+bezeqint.net.il
 bharatmail.com
 bigassweb.com
 bigblue.net.au
@@ -1035,12 +1036,14 @@ horrormail.com
 host-it.com.sg
 hot-shot.com
 hot.ee
+hot.net.il
 hotbot.com
 hotbrev.com
 hotepmail.com
 hotfire.net
 hotletter.com
 hotmail.be
+hotmail.co
 hotmail.co.il
 hotmail.co.uk
 hotmail.com
@@ -1054,6 +1057,7 @@ hotmail.it
 hotmail.kg
 hotmail.kz
 hotmail.ru
+hotmobile.co.il
 hotpop.com
 hotpop3.com
 hotvoice.com
@@ -2861,6 +2865,8 @@ netspeedway.com
 netsquare.com
 netster.com
 nettaxi.com
+netvision.co.il
+netvision.net.il
 netzero.com
 netzero.net
 neuf.fr
@@ -3602,6 +3608,8 @@ vr9.com
 w3.to
 wahoye.com
 wales2000.net
+walla.co.il
+walla.com
 wam.co.za
 wanadoo.co.uk
 wanadoo.es
@@ -3767,6 +3775,7 @@ youvegotmail.net
 yuuhuu.net
 yyhmail.com
 zahadum.com
+zahav.net.il
 zcities.com
 zdnetmail.com
 zeeks.com
