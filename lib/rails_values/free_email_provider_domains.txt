@@ -239,6 +239,7 @@ bestmail.us
 bestweb.net
 bettergolf.net
 bev.net
+bezeq.co.il
 bezeqint.net
 bezeqint.net.il
 bharatmail.com
@@ -2866,6 +2867,7 @@ netsquare.com
 netster.com
 nettaxi.com
 netvision.co.il
+netvision.net
 netvision.net.il
 netzero.com
 netzero.net
