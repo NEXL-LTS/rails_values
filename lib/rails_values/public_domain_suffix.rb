@@ -12,7 +12,8 @@ module RailsValues
     include Comparable
 
     # https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-    TOP_LEVEL_DOMAINS = File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp).freeze
+    TOP_LEVEL_DOMAINS =
+      (File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp) + %w[LOCAL]).freeze
 
     def initialize(content)
       matching_tld = TOP_LEVEL_DOMAINS.any? { |d| content.upcase.split('.').last == d }
@@ -51,7 +52,7 @@ module RailsValues
     def subdomain
       return self if @tld_exception
 
-      self.class.cast(content.subdomain)
+      self.class.cast(content.subdomain || content)
     end
 
     def to_str

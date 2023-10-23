@@ -93,6 +93,18 @@ module RailsValues
       expect(value.trd).to be_nil
     end
 
+    it 'accepts mil.local' do
+      value = cast('mil.local')
+      expect(value.to_s).to eq('mil.local')
+      expect(value).to be_present
+      expect(value).not_to be_exceptional
+      expect(value.domain).to eq('mil.local')
+      expect(value.subdomain).to eq('mil.local')
+      expect(value.tld).to eq('local')
+      expect(value.sld).to eq('mil')
+      expect(value.trd).to be_nil
+    end
+
     it 'accepts numbers and dashes' do
       value = cast('xn--85x722f.xn--55qx5d.cn')
       expect(value.to_s).to eq('xn--85x722f.xn--55qx5d.cn')
