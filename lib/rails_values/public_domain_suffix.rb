@@ -13,7 +13,7 @@ module RailsValues
 
     # https://data.iana.org/TLD/tlds-alpha-by-domain.txt
     TOP_LEVEL_DOMAINS =
-      (File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp) + %w[LOCAL]).freeze
+      (File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp) + %w[TEST EXAMPLE LOCAL]).freeze
 
     def initialize(content)
       matching_tld = TOP_LEVEL_DOMAINS.any? { |d| content.upcase.split('.').last == d }
