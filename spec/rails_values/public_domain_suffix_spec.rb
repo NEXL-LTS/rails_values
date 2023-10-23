@@ -155,6 +155,15 @@ module RailsValues
         .to contain_exactly('Public domain suffix has invalid tld')
     end
 
+    it 'returns exceptional if invalid tld' do
+      value = cast('test.comn')
+      expect(value.to_s).to eq('test.comn')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+      val_nil = nil
+      expect(value == val_nil).to be_falsy
+    end
+
     it 'returns exceptional if starts with "."' do
       value = cast('.tes.com')
       expect(value.to_s).to eq('.tes.com')
