@@ -74,7 +74,7 @@ module RailsValues
 
     FREE_DOMAINS = File.readlines("#{__dir__}/free_email_provider_domains.txt").map(&:chomp).sort.freeze
     def free_email?
-      FREE_DOMAINS.bsearch { |x| to_str <=> x }.present?
+      FREE_DOMAINS.bsearch { |x| to_str <=> x }.present? || %w[gmail yahoo outlook].include?(sld)
     end
 
     TLD_PART_TO_COUNTRY = MultiJson.load(File.read("#{__dir__}/tld_to_country.json")).each_with_object({}) do |i, r|

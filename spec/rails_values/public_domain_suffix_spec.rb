@@ -272,8 +272,17 @@ module RailsValues
       it { expect(cast('gmail.com')).to be_free_email }
       it { expect(cast('me.com')).to be_free_email }
       it { expect(cast('privaterelay.appleid.com')).to be_free_email }
-
       it { expect(cast('nexl.io')).not_to be_free_email }
+      it { expect(cast('gmail.com.au')).to be_free_email }
+      it { expect(cast('gmail.co')).to be_free_email }
+      it { expect(cast('gmail.net.au')).to be_free_email }
+      it { expect(cast('83gmail.com')).to be_free_email }
+      it { expect(cast('outlook.com.au')).to be_free_email }
+      it { expect(cast('outlook.co')).to be_free_email }
+      it { expect(cast('outlook.net.au')).to be_free_email }
+      it { expect(cast('yahoo.com.au')).to be_free_email }
+      it { expect(cast('yahoo.co')).to be_free_email }
+      it { expect(cast('yahoo.net.au')).to be_free_email }
     end
 
     describe '#country' do
