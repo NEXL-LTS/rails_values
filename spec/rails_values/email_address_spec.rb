@@ -115,7 +115,7 @@ module RailsValues
       expect(cast('My@mail.com').as_json).to eq('my@mail.com')
     end
 
-    it 'can return the entire parsed email' do
+    it 'can return the entire email' do
       expect(cast('Display Name <sender@nexl.io>').format).to eq('Display Name <sender@nexl.io>')
     end
 
