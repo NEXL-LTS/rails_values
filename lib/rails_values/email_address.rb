@@ -14,7 +14,7 @@ module RailsValues
       freeze
     end
 
-    delegate :local, :display_name, to: :mail_address
+    delegate :local, :display_name, :format, to: :mail_address
 
     delegate :as_json, to: :to_s
 
