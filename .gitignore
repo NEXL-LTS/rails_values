@@ -12,3 +12,5 @@
 /.byebug_history
 # rspec failure tracking
 .rspec_status
+#IDE config
+.idea/
