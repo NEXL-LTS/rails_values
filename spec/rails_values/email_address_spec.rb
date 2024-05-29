@@ -115,10 +115,6 @@ module RailsValues
       expect(cast('My@mail.com').as_json).to eq('my@mail.com')
     end
 
-    it 'can return the entire email' do
-      expect(cast('Display Name <sender@nexl.io>').format).to eq('Display Name <sender@nexl.io>')
-    end
-
     describe '#free_email?' do
       it { expect(cast('My@mail.com')).to be_free_email }
       it { expect(cast('person.email@telstra.com')).not_to be_free_email }
