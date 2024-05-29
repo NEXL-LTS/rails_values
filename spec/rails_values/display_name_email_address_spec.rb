@@ -11,13 +11,24 @@ module RailsValues
       described_class.cast(*args)
     end
 
-    it 'is equal' do
+    it 'to_s should lower case the email address' do
+      expect(cast('Test <TEST@mail.com>')).to eq('Test <test@mail.com>')
+    end
+
+    it 'they are equal if display names and emails are the same' do
       first_cast = cast('Test <test@mail.com>')
       second_cast = cast('Test <test@mail.com>')
       expect(first_cast).to eq(second_cast)
       expect(first_cast).to eql(second_cast)
       expect([first_cast, second_cast].uniq).to have_attributes(size: 1)
       expect(first_cast).to eq('Test <test@mail.com>')
+    end
+
+    it 'they are not equal if display names are different' do
+      first_cast = cast('Test <test@mail.com>')
+      second_cast = cast('Marketing <test@mail.com>')
+      expect(first_cast).not_to eq(second_cast)
+      expect(first_cast).not_to eql(second_cast)
     end
 
     it 'can be created' do
@@ -112,7 +123,7 @@ module RailsValues
     end
 
     it 'can be converted to json' do
-      expect(cast('My@mail.com').as_json).to eq('my@mail.com')
+      expect(cast('Reply <my@mail.com>').as_json).to eq('Reply <my@mail.com>')
     end
 
     it 'can return the entire email' do

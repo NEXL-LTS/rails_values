@@ -29,11 +29,11 @@ module RailsValues
     end
 
     def self.cast(content)
-      return content if content.is_a?(FormattedEmailAddress)
+      return content if content.is_a?(DisplayNameEmailAddress)
 
       content ||= ''
 
-      FormattedEmailAddress.new(content.to_str)
+      DisplayNameEmailAddress.new(content.to_str)
     rescue Mail::Field::ParseError, NoMethodError
       ExceptionalValue.new(content, "has a invalid value of #{content}")
     end
