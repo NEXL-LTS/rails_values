@@ -17,8 +17,9 @@ module RailsValues
       ActiveRecord::Type.register(:rv_country) { CountryActiveModelConverter.new }
       require_relative 'email_address_active_model_converter'
       ActiveRecord::Type.register(:rv_email_address) { EmailAddressActiveModelConverter.new }
-      require_relative 'formatted_email_address_active_model_converter'
-      ActiveRecord::Type.register(:rv_formatted_email_address) { FormattedEmailAddressActiveModelConverter.new }
+      require_relative 'display_name_email_address_active_model_converter'
+      ActiveRecord::Type.register(:rv_formatted_email_address) { DisplayNameEmailAddressActiveModelConverter.new }
+      ActiveRecord::Type.register(:rv_display_name_email_address) { DisplayNameEmailAddressActiveModelConverter.new }
       require_relative 'public_domain_suffix_active_model_converter'
       ActiveRecord::Type.register(:rv_public_domain_suffix) { PublicDomainSuffixActiveModelConverter.new }
       require_relative 'http_url_active_model_converter'
