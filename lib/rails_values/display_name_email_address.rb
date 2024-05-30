@@ -14,7 +14,7 @@ module RailsValues
 
     def to_s
       if mail_address.display_name
-        "#{mail_address.display_name} <#{mail_address.address&.downcase}>"
+        "#{@mail_address.display_name} <#{@mail_address.address&.downcase}>"
       else
         mail_address.address&.downcase.to_s
       end
@@ -22,10 +22,6 @@ module RailsValues
 
     def <=>(other)
       to_s <=> other.to_s
-    end
-
-    def to_str
-      complete_address
     end
 
     def self.cast(content)
@@ -37,13 +33,5 @@ module RailsValues
     rescue Mail::Field::ParseError, NoMethodError
       ExceptionalValue.new(content, "has a invalid value of #{content}")
     end
-
-    private
-
-    def complete_address
-      "#{@mail_address.display_name} <#{@mail_address.address&.downcase}>"
-      @mail_address.format
-    end
-
   end
 end
