@@ -24,11 +24,14 @@ module RailsValues
       expect(first_cast).to eq('Test <test@mail.com>')
     end
 
-    it 'they are not equal if display names are different' do
+    it 'they are not equal if there is any difference in display name' do
       first_cast = cast('Test <test@mail.com>')
       second_cast = cast('Marketing <test@mail.com>')
+      third_cast = cast('TEST <test@mail.com>')
       expect(first_cast).not_to eq(second_cast)
       expect(first_cast).not_to eql(second_cast)
+      expect(first_cast).not_to eq(third_cast)
+      expect(first_cast).not_to eql(third_cast)
     end
 
     it 'can be created' do
