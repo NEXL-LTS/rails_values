@@ -1,8 +1,3 @@
-require 'mail'
-require_relative 'whole_value_concern'
-require_relative 'exceptional_value'
-require_relative 'subdomain'
-require_relative 'public_domain_suffix'
 require_relative 'email_address'
 
 module RailsValues

@@ -11,6 +11,7 @@ require_relative 'rails_values/exceptional_value'
 
 require_relative 'rails_values/subdomain'
 require_relative 'rails_values/public_domain_suffix'
+require_relative 'rails_values/display_name_email_address'
 require_relative 'rails_values/email_address'
 require_relative 'rails_values/email_address_list'
 require_relative 'rails_values/http_url'
