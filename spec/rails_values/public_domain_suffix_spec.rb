@@ -37,6 +37,13 @@ module RailsValues
       expect(value.trd).to be_nil
     end
 
+    it 'can be used for state domains' do
+      value = cast('health.qld.gov.au')
+      expect(value).not_to be_exceptional
+      expect(value.to_s).to eq('health.qld.gov.au')
+      expect(value.trd).to eq('health')
+    end
+
     it 'accepts longer root domain' do
       value = cast('test.americanexpress')
       expect(value.to_s).to eq('test.americanexpress')

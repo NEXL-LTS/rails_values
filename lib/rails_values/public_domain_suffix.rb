@@ -1,6 +1,6 @@
 require 'public_suffix'
 require 'multi_json'
-
+require_relative 'nexl_public_suffix_list'
 require_relative 'whole_value_concern'
 require_relative 'exceptional_value'
 require_relative 'public_domain_suffix_blank'
@@ -24,7 +24,7 @@ module RailsValues
       @content = if @tld_exception
                    PublicSuffix::Domain.new(content, nil, nil)
                  else
-                   PublicSuffix.parse(content).freeze
+                   PublicSuffix.parse(content, list: NEXL_LIST).freeze
                  end
 
       freeze
