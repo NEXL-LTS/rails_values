@@ -9,14 +9,14 @@ module RailsValues
 
     def to_s
       if mail_address.display_name
-        "#{@mail_address.display_name} <#{@mail_address.address&.downcase}>"
+        "\"#{@mail_address.display_name}\" <#{@mail_address.address&.downcase}>"
       else
         mail_address.address&.downcase.to_s
       end
     end
 
     def <=>(other)
-      to_s <=> other.to_s
+      to_s <=> DisplayNameEmailAddress.cast(other).to_s
     end
 
     def self.cast(content)

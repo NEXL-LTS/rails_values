@@ -36,7 +36,7 @@ module RailsValues
 
     it 'can be created' do
       value = cast('Test <test@mail.com>')
-      expect(value.to_s).to eq('Test <test@mail.com>')
+      expect(value.to_s).to eq('"Test" <test@mail.com>')
       expect(value).to be_present
       expect(value).to be_free_email
       expect(value).not_to be_exceptional
@@ -126,7 +126,7 @@ module RailsValues
     end
 
     it 'can be converted to json' do
-      expect(cast('Reply <my@mail.com>').as_json).to eq('Reply <my@mail.com>')
+      expect(cast('Reply <my@mail.com>').as_json).to eq('"Reply" <my@mail.com>')
     end
 
     it 'can return the entire email' do
