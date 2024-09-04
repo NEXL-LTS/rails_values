@@ -185,8 +185,6 @@ ato.check.com
 atozasia.com
 attbi.com
 attglobal.net
-attglobal.net
-att.net
 att.net
 attymail.com
 au.ru
@@ -230,7 +228,6 @@ belice.com
 belizehome.com
 bellatlantic.net
 bellnet.ca
-bellsouth.net
 bellsouth.net
 berkscounty.com
 berlin.com
@@ -3250,7 +3247,6 @@ snail-mail.ney
 snakemail.com
 sndt.net
 sneakemail.com
-snet.net
 snet.net
 sniper.hu
 snip.net
