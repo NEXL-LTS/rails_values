@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'rails_values'
-  spec.version       = '1.6.5'
+  spec.version       = '1.6.6'
   spec.authors       = ['grant']
   spec.email         = ['grant@nexl.io']
 
