@@ -5,7 +5,7 @@ module RailsValues
     include Comparable
     include WholeValueConcern
 
-    delegate :format, to: :mail_address
+    delegate :format, :address, to: :mail_address
 
     def to_s
       if mail_address.display_name

@@ -133,6 +133,10 @@ module RailsValues
       expect(cast('Display Name <sender@nexl.io>').format).to eq('Display Name <sender@nexl.io>')
     end
 
+    it 'can return the just the address' do
+      expect(cast('Display Name <sender@nexl.io>').address).to eq('sender@nexl.io')
+    end
+
     describe '#free_email?' do
       it { expect(cast('My@mail.com')).to be_free_email }
       it { expect(cast('person.email@telstra.com')).not_to be_free_email }
