@@ -2,6 +2,7 @@
 013.net
 013.net.il
 013net.net
+02.pl
 1033edge.com
 11mail.com
 123box.net
@@ -1151,6 +1152,7 @@ integra.net
 interaccess.com
 interburp.com
 interfree.it
+interia.eu
 interia.pl
 interlap.com.ar
 intermail.co.il
@@ -1163,6 +1165,7 @@ inter.net.il
 internetmailing.net
 internetmci.com
 internet-police.com
+int.pl
 investormail.com
 inwind.it
 iobox.com
@@ -2936,6 +2939,7 @@ olympist.net
 omaninfo.com
 onebox.com
 onenet.com.ar
+onet.eu
 onet.pl
 oninet.pt
 online.de
@@ -2947,6 +2951,7 @@ onvillage.com
 openmbox.net
 operafan.com
 operamail.com
+op.pl
 optician.com
 optonline.net
 optusnet.com.au
@@ -3031,6 +3036,8 @@ pobox.hu
 pobox.sk
 pochta.ru
 poczta.fm
+poczta.onet.eu
+poczta.onet.pl
 poetic.com
 polbox.com
 policeoffice.com
@@ -3082,6 +3089,7 @@ project2k.com
 prolaunch.com
 promessage.com
 prontomail.com
+pro.onet.pl
 protonmail.ch
 protonmail.com
 proton.me
@@ -3501,6 +3509,7 @@ tiscali.it
 tiscali.lu
 tiscali.se
 tkcity.com
+tlen.pl
 tom.cn
 tom.com.cn
 t-online.de
@@ -3605,6 +3614,8 @@ videotron.ca
 violinmakers.co.uk
 vip.gr
 vipmail.ru
+vip.onet.pl
+vip.wp.pl
 virgilio.it
 virginmedia.com
 virgin.net
@@ -3628,6 +3639,7 @@ vote-democrats.com
 vote-hillary.com
 votenet.com
 vote-republicans.com
+vp.pl
 vr9.com
 v-sexi.com
 w3.to
@@ -3704,6 +3716,7 @@ wow.com
 wowgirl.com
 wowmail.com
 wowway.com
+wp.eu
 wp.pl
 wptamail.com
 wrestlingpages.com

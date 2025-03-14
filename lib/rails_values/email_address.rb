@@ -67,7 +67,7 @@ module RailsValues
 
     def free_email?
       !exceptional? &&
-        (subdomain.free_email? || to_s.match?(/\A\w\d+@telstra\.com\z/))
+        (subdomain.free_email? || to_s.match?(/\A\w\d+@telstra\.com\z/) || to_s.match?(/\A.+@rogers\.com\z/))
     end
 
     def inspect
