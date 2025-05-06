@@ -26,7 +26,7 @@ module RailsValues
       expect(country.continent).to eq('North America')
       expect(country.currency_code).to eq('USD')
       expect(country.subdivisions).to be_present
-      expect(country.subdivision('AA')).to be_present
+      expect(country.subdivision('AK')).to be_present
       expect(country).to be_present
       expect(country).not_to be_exceptional
     end

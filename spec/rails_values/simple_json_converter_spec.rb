@@ -1,12 +1,12 @@
 require 'rails_values/simple_json_converter'
-require 'rails_values/industry_list'
+require 'rails_values/email_address_list'
 
 module RailsValues
   RSpec.describe SimpleJsonConverter do
-    subject { described_class.new(IndustryList) }
+    subject { described_class.new(EmailAddressList) }
 
     it 'can cast and serialize' do
-      value = IndustryList.cast(%w[101010 202010])
+      value = EmailAddressList.cast(%w[one@email.com two@mail.io])
       value_serialized = subject.serialize(value)
       value_casted = subject.cast(value_serialized)
 
