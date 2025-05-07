@@ -15,12 +15,10 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.7', '3.0']
-
+        ruby-version: ['2.7', '3.0', '3.4']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -30,3 +28,32 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
       run: bundle exec rake
+
+  test_min_dependencies:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.7', '3.0', '3.4']
+    env:
+      GEM_VERSIONS: min
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run tests with minimum dependencies
+      run: bundle exec rake
+
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.4
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run rubocop
+      run: bundle exec rubocop

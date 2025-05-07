@@ -118,7 +118,7 @@ module RailsValues
     def self.find_iso_country(content)
       ISO3166::Country.send(:[], content) ||
         ISO3166::Country.find_country_by_alpha3(content) ||
-        ISO3166::Country.find_country_by_name(content)
+        ISO3166::Country.find_country_by_any_name(content)
     end
 
     def self.is?(value)
