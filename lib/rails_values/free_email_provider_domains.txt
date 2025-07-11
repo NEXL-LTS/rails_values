@@ -2886,6 +2886,7 @@ netvision.net
 netvision.net.il
 netzero.com
 netzero.net
+netcabo.pt
 neuf.fr
 newmail.com
 newmail.net
