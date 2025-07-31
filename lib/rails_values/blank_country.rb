@@ -7,8 +7,10 @@ module RailsValues
     def <=>(other)
       to_s <=> other.to_s
     end
-
+    
     def eql?(other)
+      return false unless other.is_a?(Country)
+  
       alpha2 == other.alpha2
     end
 
