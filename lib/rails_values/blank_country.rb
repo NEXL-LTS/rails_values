@@ -9,10 +9,8 @@ module RailsValues
     end
 
     def eql?(other)
-      return true if other.is_a?(BlankCountry)
-      return false unless other.is_a?(Country)
-
-      alpha2 == other.alpha2
+      other.is_a?(BlankCountry) || 
+        (other.is_a?(Country) && alpha2 == other.alpha2)
     end
 
     delegate :hash, to: :alpha2
