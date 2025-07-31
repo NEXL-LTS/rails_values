@@ -3,6 +3,7 @@ require_relative 'blank'
 module RailsValues
   class BlankIndustry < Blank
     include Comparable
+
     def <=>(other)
       to_s <=> other.to_s
     end

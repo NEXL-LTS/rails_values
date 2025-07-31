@@ -9,7 +9,7 @@ module RailsValues
     end
 
     def eql?(other)
-      other.is_a?(BlankCountry) || 
+      other.is_a?(BlankCountry) ||
         (other.is_a?(Country) && alpha2 == other.alpha2)
     end
 
