@@ -9,7 +9,7 @@ module RailsValues
     end
 
     def eql?(other)
-      alpha2 == other.alpha2
+      Country.cast(other).is_a?(BlankCountry)
     end
 
     delegate :hash, to: :alpha2
