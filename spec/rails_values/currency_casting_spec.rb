@@ -8,7 +8,8 @@ module RailsValues
       end
 
       context 'with valid currency object' do
-        money = Money::Currency.find('USD')
+        let(:money) { Money::Currency.find('USD') }
+
         it { expect(described_class.new.cast(money)).to eq(money) }
       end
 
