@@ -2,8 +2,12 @@ require_relative 'public_domain_suffix'
 
 module RailsValues
   class PublicDomainSuffixSerializer < ActiveJob::Serializers::ObjectSerializer
+    def klass
+      PublicDomainSuffix
+    end
+
     def serialize?(argument)
-      argument.is_a?(PublicDomainSuffix)
+      argument.is_a?(klass)
     end
 
     def serialize(domain)
