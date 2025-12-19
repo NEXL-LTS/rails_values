@@ -2,8 +2,12 @@ require_relative 'email_address'
 
 module RailsValues
   class EmailAddressSerializer < ActiveJob::Serializers::ObjectSerializer
+    def klass
+      EmailAddress
+    end
+
     def serialize?(argument)
-      argument.is_a?(EmailAddress)
+      argument.is_a?(klass)
     end
 
     def serialize(email_address)

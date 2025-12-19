@@ -2,8 +2,12 @@ require_relative 'http_url'
 
 module RailsValues
   class HttpUrlSerializer < ActiveJob::Serializers::ObjectSerializer
+    def klass
+      HttpUrl
+    end
+
     def serialize?(argument)
-      argument.is_a?(HttpUrl)
+      argument.is_a?(klass)
     end
 
     def serialize(value)
