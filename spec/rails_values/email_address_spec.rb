@@ -122,7 +122,7 @@ module RailsValues
       expect(value).to be_exceptional
     end
 
-    it 'returns exceptional email contains a space and fullstop in the local part' do
+    it 'returns exceptional email contains a space and full stop in the local part' do
       value = cast('g. speel@unquoted.com')
       expect(value.to_s).to eq('g. speel@unquoted.com')
       expect(value).not_to be_blank
