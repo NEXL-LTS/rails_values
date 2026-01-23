@@ -11,6 +11,8 @@ module RailsValues
 
     def initialize(address)
       @mail_address = Mail::Address.new(address)
+      raise ArgumentError, "could not determine local for #{address}" if address.present? && !@mail_address.local
+
       freeze
     end
 
@@ -83,6 +85,8 @@ module RailsValues
       EmailAddress.new(content.to_str)
     rescue Mail::Field::ParseError, NoMethodError
       ExceptionalValue.new(content, "has a invalid value of #{content}")
+    rescue ArgumentError => e
+      ExceptionalValue.new(content, e.message)
     end
 
     def self.same?(val1, val2)
