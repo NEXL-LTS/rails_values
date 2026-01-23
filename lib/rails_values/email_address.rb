@@ -9,8 +9,9 @@ module RailsValues
     include Comparable
     include WholeValueConcern
 
-    def initialize(address)
+    def initialize(address, original_input: nil)
       @mail_address = Mail::Address.new(address)
+      @original_input = original_input
       freeze
     end
 
@@ -28,7 +29,7 @@ module RailsValues
     delegate :hash, to: :to_s
 
     def exceptional?
-      (present? && domain.blank?) || subdomain.exceptional? || domain.exceptional?
+      (present? && domain.blank?) || subdomain.exceptional? || domain.exceptional? || local_has_space?
     end
 
     def exceptional_errors(errors, attribute, _options = nil)
@@ -38,7 +39,10 @@ module RailsValues
     delegate :blank?, to: :to_s
 
     def to_s
-      mail_address.address&.downcase.to_s
+      return @original_input.to_s.downcase if @original_input
+
+      address = mail_address.address&.downcase.to_s
+      remove_local_quotes(address)
     end
 
     def to_str
@@ -79,11 +83,23 @@ module RailsValues
       return content if content.is_a?(EmailAddress)
 
       content ||= ''
+      content_str = content.to_str
 
-      EmailAddress.new(content.to_str)
-    rescue Mail::Field::ParseError, NoMethodError
-      ExceptionalValue.new(content, "has a invalid value of #{content}")
+      EmailAddress.new(content_str)
+    rescue Mail::Field::ParseError, Mail::Field::IncompleteParseError, NoMethodError
+      handle_parse_error(content_str)
     end
+
+    def self.handle_parse_error(content_str)
+      if content_str.include?('@') && content_str.include?(' ')
+        domain_part = content_str.split('@').last
+        normalized = "placeholder@#{domain_part}"
+        EmailAddress.new(normalized, original_input: content_str)
+      else
+        ExceptionalValue.new(content_str, "has a invalid value of #{content_str}")
+      end
+    end
+    private_class_method :handle_parse_error
 
     def self.same?(val1, val2)
       cast(val1) == cast(val2)
@@ -104,5 +120,19 @@ module RailsValues
     private
 
     attr_reader :mail_address
+
+    def local_has_space?
+      return @original_input.to_s.split('@').first.include?(' ') if @original_input
+
+      local_part = local.to_s
+      unquoted_local = local_part.gsub(/\A"|"\z/, '')
+      unquoted_local.include?(' ')
+    end
+
+    def remove_local_quotes(address)
+      return address unless address.include?('"')
+
+      address.gsub(/^"([^"]+)"@/, '\1@')
+    end
   end
 end

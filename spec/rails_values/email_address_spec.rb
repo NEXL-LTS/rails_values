@@ -115,6 +115,24 @@ module RailsValues
       expect(cast('My@mail.com').as_json).to eq('my@mail.com')
     end
 
+    it 'returns exceptional email contains a space in the local part' do
+      value = cast('g speel@unquoted.com')
+      expect(value.to_s).to eq('g speel@unquoted.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+      expect(value.domain).to be_regular
+      expect(value.domain.to_s).to eq('unquoted.com')
+    end
+
+    it 'returns regular email when local part contains a quoted space' do
+      value = cast('"g speel"@quoted.com')
+      expect(value.to_s).to eq('g speel@quoted.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+      expect(value.domain).to be_regular
+      expect(value.domain.to_s).to eq('quoted.com')
+    end
+
     describe '#free_email?' do
       it { expect(cast('My@mail.com')).to be_free_email }
       it { expect(cast('person.email@telstra.com')).not_to be_free_email }
