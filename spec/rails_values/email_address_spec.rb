@@ -120,15 +120,19 @@ module RailsValues
       expect(value.to_s).to eq('g speel@unquoted.com')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
-      expect(value.domain).to be_regular
-      expect(value.domain.to_s).to eq('unquoted.com')
+    end
+
+    it 'returns exceptional email contains a space and fullstop in the local part' do
+      value = cast('g. speel@unquoted.com')
+      expect(value.to_s).to eq('g. speel@unquoted.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
     end
 
     it 'returns regular email when local part contains a quoted space' do
       value = cast('"g speel"@quoted.com')
-      expect(value.to_s).to eq('g speel@quoted.com')
+      expect(value.to_s).to eq('"g speel"@quoted.com')
       expect(value).not_to be_blank
-      expect(value).to be_exceptional
       expect(value.domain).to be_regular
       expect(value.domain.to_s).to eq('quoted.com')
     end

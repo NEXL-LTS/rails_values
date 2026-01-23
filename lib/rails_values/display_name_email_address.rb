@@ -27,6 +27,8 @@ module RailsValues
       DisplayNameEmailAddress.new(content.to_str)
     rescue Mail::Field::ParseError, NoMethodError
       ExceptionalValue.new(content, "has a invalid value of #{content}")
+    rescue ArgumentError => e
+      ExceptionalValue.new(content, e.message)
     end
   end
 end
