@@ -90,6 +90,13 @@ module RailsValues
       expect(value).not_to be_free_email
     end
 
+    it 'returns exceptional if () as part of username' do
+      value = cast('john(comment)@nexl.com')
+      expect(value.to_s).to eq('john(comment)@nexl.com')
+      expect(value).not_to be_blank
+      expect(value).to be_exceptional
+    end
+
     it 'returns exceptional if domain with double ..' do
       value = cast('saljubis01@yahoo.com..my')
       expect(value.to_s).to eq('saljubis01@yahoo.com..my')
@@ -135,6 +142,15 @@ module RailsValues
       expect(value).not_to be_blank
       expect(value.domain).to be_regular
       expect(value.domain.to_s).to eq('quoted.com')
+    end
+
+    it 'returns regular email with display name in angle brackets' do
+      value = cast('John Doe <john@example.com>')
+      expect(value.to_s).to eq('john@example.com')
+      expect(value).not_to be_blank
+      expect(value).not_to be_exceptional
+      expect(value.display_name).to eq('John Doe')
+      expect(value.local).to eq('john')
     end
 
     describe '#free_email?' do
