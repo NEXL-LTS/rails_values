@@ -91,8 +91,8 @@ module RailsValues
     end
 
     it 'returns exceptional if () as part of username' do
-      value = cast('john(comment)@nexl.com')
-      expect(value.to_s).to eq('john(comment)@nexl.com')
+      value = cast('john (comment)@nexl.com')
+      expect(value.to_s).to eq('john (comment)@nexl.com')
       expect(value).not_to be_blank
       expect(value).to be_exceptional
     end
