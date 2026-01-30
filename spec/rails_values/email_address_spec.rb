@@ -155,6 +155,7 @@ module RailsValues
 
     describe '#free_email?' do
       it { expect(cast('My@mail.com')).to be_free_email }
+      it { expect(cast('test@hotmail.ca')).to be_free_email }
       it { expect(cast('person.email@telstra.com')).not_to be_free_email }
       it { expect(cast('person@rogers.com')).to be_free_email }
       it { expect(cast('person@sub.rogers.com')).not_to be_free_email }

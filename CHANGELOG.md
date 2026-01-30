@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.8] - 2026-01-30
+
+### Added
+
+- Added `hotmail.ca` to the list of recognized personal email domains.
+
 ## [2.0.6] - 2026-01-23
 
 ### Changed
