@@ -6,6 +6,12 @@
 
 - Added `hotmail.ca` to the list of recognized personal email domains.
 
+## [2.0.7] - 2026-01-27
+
+### Changed
+
+- Add `URI::MailTo::EMAIL_REGEXP` validation to catch invalid email formats early, preventing `Mail::Address` from mangling emails with unquoted comments or spaces in the local part. Emails like `John (comment)@example.com` are now marked exceptional.
+
 ## [2.0.6] - 2026-01-23
 
 ### Changed
