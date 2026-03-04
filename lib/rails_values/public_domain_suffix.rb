@@ -1,5 +1,6 @@
 require 'public_suffix'
 require 'multi_json'
+require 'set'
 
 require_relative 'whole_value_concern'
 require_relative 'exceptional_value'
