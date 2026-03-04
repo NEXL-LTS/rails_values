@@ -25,7 +25,7 @@ module RailsValues
     end
 
     def to_s
-      @list.map(&:to_s).join(' ')
+      @list.join(' ')
     end
 
     def blank?
