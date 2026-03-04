@@ -15,8 +15,11 @@ module RailsValues
     TOP_LEVEL_DOMAINS =
       (File.readlines("#{__dir__}/tlds-alpha-by-domain.txt").map(&:chomp) + %w[TEST EXAMPLE LOCAL]).freeze
 
+    TOP_LEVEL_DOMAINS_SET = Set.new(TOP_LEVEL_DOMAINS).freeze
+
     def initialize(content)
-      matching_tld = TOP_LEVEL_DOMAINS.any? { |d| content.upcase.split('.').last == d }
+      last_part = content.upcase.split('.').last
+      matching_tld = TOP_LEVEL_DOMAINS_SET.include?(last_part)
       raise ArgumentError, 'has invalid tld' unless matching_tld
 
       @tld_exception = content.include?('.') && PublicSuffix::List.default.find(content).value == content
