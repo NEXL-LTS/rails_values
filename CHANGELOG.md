@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.10] - 2026-07-29
+
+### Added
+
+- Merged the current IANA top level domain list into `tlds-alpha-by-domain.txt`, adding `MERCK` and `WEB` so brand gTLD domains such as `msd.merck` are no longer exceptional.
+- Added a `rake update_tlds` task that merges the published IANA list without dropping retired top level domains.
+
 ## [2.0.8] - 2026-01-30
 
 ### Added

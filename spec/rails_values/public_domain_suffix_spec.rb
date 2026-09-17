@@ -47,6 +47,22 @@ module RailsValues
       expect(value.trd).to be_nil
     end
 
+    it 'accepts single registrant brand gTLDs' do
+      %w[global.weir msd.merck bmwgroup.bmw].each do |domain|
+        value = cast(domain)
+        expect(value).not_to be_exceptional, "expected #{domain} to be parsable"
+        expect(value.tld).to eq(domain.split('.').last)
+      end
+    end
+
+    it 'covers every top level domain the public suffix list registers' do
+      psl_tlds = File.readlines(PublicSuffix::List::DEFAULT_LIST_PATH).map(&:chomp)
+                     .grep(/\A[a-z0-9-]+\z/)
+      known = psl_tlds.select { |tld| described_class::TOP_LEVEL_DOMAINS_SET.include?(tld.upcase) }
+
+      expect(psl_tlds - known).to eq(['onion'])
+    end
+
     it 'accepts nexl.com.au' do
       value = cast('nexl.com.au')
       expect(value.to_s).to eq('nexl.com.au')
